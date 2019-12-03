@@ -44,6 +44,7 @@ extern "C" {
 #include "lib/arm_mat_init_f32.c"
 #include "lib/arm_mat_sub_f32.c"
 #include "lib/arm_mat_mult_f32.c"
+#include "lib/arm_mat_add_f32.c"
 #include "lib/arm_math.h"
 
 /* Private typedef -----------------------------------------------------------*/
@@ -71,6 +72,9 @@ void module_co_init()
   pos_ref.x = 2.0;
   pos_ref.y = 0.0;
   pos_ref.z = 1.5;
+  pos_ref.dotX = 0;
+  pos_ref.dotY = 0;
+  pos_ref.dotZ = 0;
 
 	/* Inicializa os dados da attitude*/
 	oControlOutputData.actuation.servoRight = 0;
@@ -102,6 +106,7 @@ void module_co_run()
 //		iInputData.position.dotX = pos_ref.dotX;
 //		iInputData.position.dotY = pos_ref.dotY;
 //		iInputData.position.dotZ = pos_ref.dotZ;
+		m5_reset_stats(0,0);
 		oControlOutputData.actuation = c_control_HinfLoad_controller(iInputData);
 
 	}
@@ -116,7 +121,7 @@ int main()
 	while(heartBeat<=100){
 		heartBeat+=1;
 
-		m5_reset_stats(0,0);
+//		m5_reset_stats(0,0);
 
 		iInputData.position.x = pos_ref.x;
 		iInputData.position.y = pos_ref.y;

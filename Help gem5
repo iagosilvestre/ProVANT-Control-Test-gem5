@@ -1,0 +1,125 @@
+export PATH="$(pwd)/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin:${PATH}"
+%%%% N funcionou p mim %%%%%%%%%%
+arm-linux-gnueabihf-g++ -std=c++11 -o control control.cpp -static -fpermissive
+-----------------------------------------------------------------------------------------
+
+2,3 1cpu
+1,4 4cpu
+
+
+
+
+
+
+check 4 - terminal 4 cpu
+check 3 - terminal 1 cpu
+check 2 - hackback 1 cpu
+check 1 - hackback 4 cpu
+
+
+
+
+----------------------------------------------------------------------------------------
+sudo mount -o loop,offset=32256 linaro-minimal-aarch64.img /mnt/p1
+sudo mount -o loop,offset=32256 workloads.img /mnt/p2
+
+
+m5term localhost 3456
+
+aarch64-linux-gnu-g++ -mcpu=cortex-a53 control.cpp -o control -static -fpermissive -lstdc++
+
+
+https://stackoverflow.com/questions/38025275/how-to-install-the-aarch64-toolchain-for-armv8-cortex-a53-on-debian
+
+
+build/ARM/gem5.opt configs/example/fs.py --disk-image=linaro-minimal-aarch64.img --kernel=vmlinux.vexpress_gem5_v1_64 --machine-type=VExpress_GEM5_V1 --dtb=armv8_gem5_v1_4cpu.dtb --cpu-type=AtomicSimpleCPU --num-cpus=4 --mem-type=LPDDR2_S4_1066_1x32 --mem-size=1GB --caches --l2cache --l2_size=512kB --l1i_size=16kB --l1d_size=16kB --cpu-clock=1.4GHz
+
+build/ARM/gem5.opt configs/example/fs.py --list-cpu-types
+
+
+------------------------------------------------------------------------------------
+------------------------------------- 1CPU -----------------------------------------
+------------------------------------------------------------------------------------
+
+build/ARM/gem5.opt configs/example/fs.py --script=configs/boot/hack_back_ckpt.rcS --disk-image=linaro-minimal-aarch64.img --kernel=vmlinux.vexpress_gem5_v1_64 --machine-type=VExpress_GEM5_V1 --dtb=armv8_gem5_v1_1cpu.dtb --cpu-type=HPI --num-cpus=1 --mem-type=LPDDR2_S4_1066_1x32 --mem-size=1GB --caches --l2cache --l2_size=512kB --l1i_size=16kB --l1d_size=16kB --cpu-clock=1.4GHz
+
+build/ARM/gem5.opt configs/example/fs.py --disk-image=linaro-minimal-aarch64.img --kernel=vmlinux.vexpress_gem5_v1_64 --machine-type=VExpress_GEM5_V1 --dtb=armv8_gem5_v1_1cpu.dtb --cpu-type=HPI --num-cpus=1 --mem-type=LPDDR2_S4_1066_1x32 --mem-size=1GB --caches --l2cache --l2_size=512kB --l1i_size=16kB --l1d_size=16kB --cpu-clock=1.4GHz  --restore-with-cpu=HPI --script=hackback.rcS
+
+build/ARM/gem5.opt configs/example/fs.py --disk-image=linaro-minimal-aarch64.img --kernel=vmlinux.vexpress_gem5_v1_64 --machine-type=VExpress_GEM5_V1 --dtb=armv8_gem5_v1_1cpu.dtb --cpu-type=HPI --num-cpus=1 --mem-type=LPDDR2_S4_1066_1x32 --mem-size=1GB --caches --l2cache --l2_size=512kB --l1i_size=16kB --l1d_size=16kB --cpu-clock=1.4GHz  --restore-with-cpu=HPI --script=test.rcS -r 2
+
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+
+
+------------------------------------------------------------------------------------
+------------------------------------- 4CPU -----------------------------------------
+------------------------------------------------------------------------------------
+
+build/ARM/gem5.opt configs/example/fs.py --script=configs/boot/hack_back_ckpt.rcS --disk-image=linaro-minimal-aarch64.img --kernel=vmlinux.vexpress_gem5_v1_64 --machine-type=VExpress_GEM5_V1 --dtb=armv8_gem5_v1_4cpu.dtb --cpu-type=AtomicSimpleCPU --num-cpus=4 --mem-type=LPDDR2_S4_1066_1x32 --mem-size=1GB --caches --l2cache --l2_size=512kB --l1i_size=16kB --l1d_size=16kB --cpu-clock=1.4GHz
+
+build/ARM/gem5.opt configs/example/fs.py --disk-image=linaro-minimal-aarch64.img --kernel=vmlinux.vexpress_gem5_v1_64 --machine-type=VExpress_GEM5_V1 --dtb=armv8_gem5_v1_4cpu.dtb --cpu-type=AtomicSimpleCPU --num-cpus=4 --mem-type=LPDDR2_S4_1066_1x32 --mem-size=1GB --caches --l2cache --l2_size=512kB --l1i_size=16kB --l1d_size=16kB --cpu-clock=1.4GHz  --restore-with-cpu=HPI --script=hackback.rcS
+
+build/ARM/gem5.opt configs/example/fs.py --disk-image=linaro-minimal-aarch64.img --kernel=vmlinux.vexpress_gem5_v1_64 --machine-type=VExpress_GEM5_V1 --dtb=armv8_gem5_v1_4cpu.dtb --cpu-type=HPI --num-cpus=4 --mem-type=LPDDR2_S4_1066_1x32 --mem-size=1GB --caches --l2cache --l2_size=512kB --l1i_size=16kB --l1d_size=16kB --cpu-clock=1.4GHz  --restore-with-cpu=HPI --script=test.rcS -r 4 
+
+
+
+AtomicSimpleCPU
+
+usage: m5 exit [delay]
+       m5 fail <code> [delay]
+       m5 resetstats [delay [period]]
+       m5 dumpstats [delay [period]]
+       m5 dumpresetstats [delay [period]]
+       m5 readfile 
+       m5 writefile <filename> [host filename]
+       m5 execfile 
+       m5 checkpoint [delay [period]]
+       m5 addsymbol <address> <symbol>
+       m5 loadsymbol 
+       m5 initparam [key] // key must be shorter than 16 chars
+       m5 sw99param 
+       m5 pin <cpu> <program> [args ...]
+
+sim_insts                                    14090144                       # Number of instructions simulated
+sim_ops                                      16855572                       # Number of ops (including micro ops) simulated
+sim_seconds                                  0.004729 1000 SLI
+
+
+sim_insts                                     9826757                       # Number of instructions simulated
+sim_ops                                      12047291                       # Number of ops (including micro ops) simulated
+sim_seconds                                  0.002660  
+
+sim_insts                                    16600562                       # Number of instructions simulated
+sim_ops                                      20291800                       # Number of ops (including micro ops) simulated
+sim_seconds                                  0.002508 
+
+
+
+
+
+
+
+
+
+
+
+
+sim_insts                                    52125476                       # Number of instructions simulated
+sim_ops                                      62699106                       # Number of ops (including micro ops) simulated
+sim_seconds                                  0.001393 
+
+sim_insts                                    48023423                       # Number of instructions simulated
+sim_ops                                      57719045                       # Number of ops (including micro ops) simulated
+sim_seconds                                  0.002798
+
+sim_insts                                    47957514                       # Number of instructions simulated
+sim_ops                                      57639375                       # Number of ops (including micro ops) simulated
+sim_seconds                                  0.002729 
+
+
+sim_seconds                                  0.002936
+sim_seconds                                  0.003036   
+
+
