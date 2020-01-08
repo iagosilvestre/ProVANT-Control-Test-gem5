@@ -415,18 +415,18 @@ public: static void generate_Measurement(int k, double Ts, simulator_msgs::Senso
 	
 	// Get sensor data plus noise (indexes from UniversalLinkSensor.cpp and UniversalJointSensor.cpp)
 	// GPS
-	double xB = mainbody.values.at(24) + GPS_x(gen00);
-	double yB = mainbody.values.at(25) + GPS_y(gen01);
+	double xB = (rand() % 10) + GPS_x(gen00);
+	double yB = (rand() % 10) + GPS_y(gen01);
 	
 	// Barometer
-	double zB = mainbody.values.at(26) + Barometer(gen02);
+	double zB = (rand() % 10) + Barometer(gen02);
 	
 	// IMU
-	double phiB   = mainbody.values.at(27) + IMU_phi(gen03);
-	double thetaB = mainbody.values.at(28) + IMU_theta(gen04);;
-	double psiiB  = mainbody.values.at(29) + IMU_psii(gen05);;
-	std::vector<double> pqr = wIIL2pqr(mainbody.values.at(39), mainbody.values.at(40), mainbody.values.at(41),
-                                           mainbody.values.at(27), mainbody.values.at(28), mainbody.values.at(29));
+	double phiB   = (rand() % 10) + IMU_phi(gen03);
+	double thetaB = (rand() % 10) + IMU_theta(gen04);;
+	double psiiB  = (rand() % 10) + IMU_psii(gen05);;
+	std::vector<double> pqr = wIIL2pqr((rand() % 10), (rand() % 10), (rand() % 10),
+			(rand() % 10), (rand() % 10), (rand() % 10));
 	double p = pqr.at(0) + IMU_p(gen06);
 	double q = pqr.at(1) + IMU_q(gen07);
 	double r = pqr.at(2) + IMU_r(gen08);
@@ -454,8 +454,8 @@ public: static void generate_Measurement(int k, double Ts, simulator_msgs::Senso
 //	double dA1A1L_y = dA1A1L(1) + Camera_y(gen10);
 //	double dA1A1L_z = dA1A1L(2) + Camera_z(gen11);
 
-        double gamma1 = rodx.values.at(0);
-        double gamma2 = rody.values.at(0);
+        double gamma1 = (rand() % 10);
+        double gamma2 = (rand() % 10);
 
         Eigen::MatrixXd RLB(3,3);
         RLB = rotx(-gamma1)*roty(-gamma2);
@@ -473,10 +473,10 @@ public: static void generate_Measurement(int k, double Ts, simulator_msgs::Senso
 	
 	
 	// Servos
-	double aR = rightservo.values.at(0) + Servos_aR(gen12);
-	double aL = leftservo.values.at(0) + Servos_aL(gen13);
-	double aRdot = rightservo.values.at(1) + Servos_daR(gen14);
-	double aLdot = leftservo.values.at(1) + Servos_daL(gen15);
+	double aR = (rand() % 10) + Servos_aR(gen12);
+	double aL = (rand() % 10) + Servos_aL(gen13);
+	double aRdot = (rand() % 10) + Servos_daR(gen14);
+	double aLdot = (rand() % 10) + Servos_daL(gen15);
 	
 	
 	if(k==0) // Initial instant time, all sensors are available
@@ -573,18 +573,18 @@ public: static void generate_Measurement_clean(int k, double Ts, simulator_msgs:
 	
 	// Get sensor data (indexes from UniversalLinkSensor.cpp and UniversalJointSensor.cpp)
 	// GPS
-	double xB = mainbody.values.at(24);
-	double yB = mainbody.values.at(25);
+	double xB = (rand() % 10);
+	double yB = (rand() % 10);
 	
 	// Barometer
-	double zB = mainbody.values.at(26);
+	double zB = (rand() % 10);
 	
 	// IMU
-	double phiB   = mainbody.values.at(27);
-	double thetaB = mainbody.values.at(28);
-	double psiiB  = mainbody.values.at(29);
-	std::vector<double> pqr = wIIL2pqr(mainbody.values.at(39), mainbody.values.at(40), mainbody.values.at(41),
-                                           mainbody.values.at(27), mainbody.values.at(28), mainbody.values.at(29));
+	double phiB   = (rand() % 10);
+	double thetaB = (rand() % 10);
+	double psiiB  = (rand() % 10);
+	std::vector<double> pqr = wIIL2pqr((rand() % 10), (rand() % 10), (rand() % 10),
+			(rand() % 10), (rand() % 10), (rand() % 10));
 	double p = pqr.at(0);
 	double q = pqr.at(1);
 	double r = pqr.at(2);
@@ -613,8 +613,8 @@ public: static void generate_Measurement_clean(int k, double Ts, simulator_msgs:
 //	double dA1A1L_z = dA1A1L(2);
 
 
-        double gamma1 = rodx.values.at(0);
-        double gamma2 = rody.values.at(0);
+        double gamma1 = (rand() % 10);
+        double gamma2 = (rand() % 10);
 
         Eigen::MatrixXd RLB(3,3);
         RLB = rotx(-gamma1)*roty(-gamma2);
@@ -632,10 +632,10 @@ public: static void generate_Measurement_clean(int k, double Ts, simulator_msgs:
 	
 	
 	// Servos
-	double aR = rightservo.values.at(0);
-	double aL = leftservo.values.at(0);
-	double aRdot = rightservo.values.at(1);
-	double aLdot = leftservo.values.at(1);
+	double aR = (rand() % 10);
+	double aL = (rand() % 10);
+	double aRdot = (rand() % 10);
+	double aLdot = (rand() % 10);
 	
 	
 	if(k==0) // Initial instant time, all sensors are available

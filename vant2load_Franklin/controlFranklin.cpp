@@ -21,7 +21,7 @@ int main()
 		m5_dump_stats(0,0);
 		m5_reset_stats(0,0);
 //		Foo* foo1 = new Foo ();
-//		std::cout << "test if main works" << std::endl
+//		std::cout << "test if main works" << std::endl;;
 		vant2load_Franklin* control = new vant2load_Franklin();
 
 
