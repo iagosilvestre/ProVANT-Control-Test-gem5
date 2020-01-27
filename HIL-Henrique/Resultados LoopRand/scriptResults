@@ -1,0 +1,44 @@
+/sbin/m5 resetstats
+./controlLoopRandLQR
+/sbin/m5 dumpstats
+
+sim_seconds                                  0.012356  
+system.mem_ctrls.bytesReadDRAM                1336928
+
+sim_seconds                                  0.012425 
+system.mem_ctrls.bytesReadDRAM                1345632
+
+sim_seconds                                  0.012438 
+system.mem_ctrls.bytesReadDRAM                1345824 
+
+sim_seconds                                  0.012450 
+system.mem_ctrls.bytesReadDRAM                1345952 
+
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+
+/sbin/m5 resetstats;./controlLoopRandLQR;/sbin/m5 dumpstats
+
+sim_seconds                                  0.012212 
+system.mem_ctrls.bytesReadDRAM                1265504
+
+sim_seconds                                  0.012282 
+system.mem_ctrls.bytesReadDRAM                1274336
+
+sim_seconds                                  0.012294 
+system.mem_ctrls.bytesReadDRAM                1274528
+
+sim_seconds                                  0.012306 
+system.mem_ctrls.bytesReadDRAM                1274656 
+
+---------------------------------------------------------------------------
+----------------------------------------------------------------------------
+----------------------------------------------------------------------------
+/sbin/m5 resetstats;./controlLoopRandHinf;/sbin/m5 dumpstats
+
+sim_seconds                                  0.012028 
+sim_seconds                                  0.012097 
+sim_seconds                                  0.012110
+sim_seconds                                  0.012122 
+sim_seconds                                  0.012135 
+sim_seconds                                  0.012147 

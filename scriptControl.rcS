@@ -1,0 +1,8 @@
+#!/bin/sh
+# File to run the controlSimple benchmark
+/sbin/m5 dumpstats
+/sbin/m5 resetstats
+./control
+echo "Done running simulation"
+/sbin/m5 exit
+/sbin/m5 exit

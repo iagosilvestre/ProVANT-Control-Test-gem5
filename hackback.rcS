@@ -1,0 +1,5 @@
+#!/bin/sh
+# File to run the controlSimple benchmark
+
+m5 checkpoint; m5 readfile | sh
+
