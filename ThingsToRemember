@@ -1,0 +1,13 @@
+HPI model / edited cache latency
+booting with 2 images
+compiling with linked assembly .S file
+aarch-system-20180409.tar.xz
+copying ros folders to /usr/include
+
+gedit ~/.bashrc
+export M5_PATH=/home/labvant/fs/
+export GEM5_PATH=/home/labvant/gem5
+
+npad ufrn
+
+gabriela ufmg fpga
