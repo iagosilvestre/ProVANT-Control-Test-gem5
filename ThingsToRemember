@@ -5,8 +5,22 @@ aarch-system-20180409.tar.xz
 copying ros folders to /usr/include
 
 gedit ~/.bashrc
-export M5_PATH=/home/labvant/fs/
-export GEM5_PATH=/home/labvant/gem5
+export M5_PATH=/home/iago/fs/
+export GEM5_PATH=/home/iago/gem5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 npad ufrn
 

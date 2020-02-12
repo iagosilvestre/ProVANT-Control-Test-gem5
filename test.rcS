@@ -3,7 +3,7 @@
 #/sbin/m5 dumpstats 10000000000
 #/sbin/controlS
 
-sudo mount /dev/sdb1 /mnt
+sudo mount /dev/sdb /mnt
 cd /mnt
 /sbin/m5 resetstats;./vantloadMarcelo
 /sbin/m5 exit
