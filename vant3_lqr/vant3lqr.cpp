@@ -19,19 +19,19 @@ int main()
 	std::vector<double> x;
 	int k=0;
 
-		m5_dump_stats(0,0);
-		m5_reset_stats(0,0);
+//		m5_dump_stats(0,0);
+//		m5_reset_stats(0,0);
 //		Foo* foo1 = new Foo ();
 //		std::cout << "test if main works" << std::endl;;
 		vant3_lqr* control = new vant3_lqr();
 
 
-		m5_dump_stats(0,0);
-		m5_reset_stats(0,0);
+//		m5_dump_stats(0,0);
+//		m5_reset_stats(0,0);
 
 		control->config();
 
-		m5_dump_stats(0,0);
+//		m5_dump_stats(0,0);
 
 //		simulator_msgs::Sensor msgstates;
 //		arraymsg.header;
@@ -41,9 +41,11 @@ int main()
 		m5_reset_stats(0,0);
 
 		out=control->execute(arraymsg);
-
+		
+		//printf ("control executed \n");
 		m5_dump_stats(0,0);
 		k++;
+		std::cout << k << " control sequence executed" << std::endl;;
 		}
 		return 0;
 	}

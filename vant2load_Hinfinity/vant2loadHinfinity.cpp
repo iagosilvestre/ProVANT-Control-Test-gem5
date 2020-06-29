@@ -19,31 +19,20 @@ int main()
 	std::vector<double> x;
 	int k=0;
 
-//		m5_dump_stats(0,0);
-//		m5_reset_stats(0,0);
-//		Foo* foo1 = new Foo ();
-//		std::cout << "test if main works" << std::endl;;
-		hinfinity* control = new hinfinity();
+	//std::cout << "test if main works" << std::endl;
+	hinfinity* control = new hinfinity();
+	//std::cout << "control initiated" << std::endl;
+	control->config();
+	//std::cout << "control configured" << std::endl;
 
-
-//		m5_dump_stats(0,0);
-//		m5_reset_stats(0,0);
-
-		control->config();
-
-//		m5_dump_stats(0,0);
-
-//		simulator_msgs::Sensor msgstates;
-//		arraymsg.header;
-//		msgstates = arraymsg.values.at(0);
-
-		while(k<5){
-//		m5_reset_stats(0,0);
-
-		out=control->execute(arraymsg);
-
-//		m5_dump_stats(0,0);
-		k++;
-		}
-		return 0;
+	while(k<20){
+		
+	m5_reset_stats(0,0);
+	out=control->execute(arraymsg);
+	m5_dump_stats(0,0);
+		
+	k++;
+	//std::cout << k << " control executed" << std::endl;	
 	}
+	return 0;
+}

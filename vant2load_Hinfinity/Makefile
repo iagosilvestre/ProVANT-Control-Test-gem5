@@ -1,9 +1,9 @@
 # the compiler: gcc for C program, define as g++ for C++
-CC = arm-linux-gnueabi-g++ -I /usr/include/eigen3/ -I ${GEM5_PATH}/include -I /opt/ros/melodic/include
+CC = arm-linux-gnueabi-g++ -I /usr/include/eigen3/ -I /home/iago/gem5/include -I /opt/ros/melodic/include
 # compiler flags:
 #  -g    adds debugging information to the executable file
 #  -Wall turns on most, but not all, compiler warnings
-CFLAGS  =-g -Wall -static ${GEM5_PATH}/util/m5/m5op_arm.S
+CFLAGS  =-g -Wall -static /home/iago/gem5/util/m5/m5op_arm.S
 
 # the build target executable:
 TARGET = vant2loadHinfinity

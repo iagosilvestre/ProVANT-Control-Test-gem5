@@ -475,7 +475,7 @@ class vant2load_Franklin : public Icontroller
 		Eigen::MatrixXd csiref(3,1);
 		Eigen::MatrixXd csirefdot(3,1);
 		Eigen::MatrixXd csirefddot(3,1);
-                int which_trajectory = 0; // Hovering
+                int which_trajectory = 0; // 0 is Hovering
 		//int which_trajectory = 1; // Trajetoria artigo SBAI (mais rapida)
 		//int which_trajectory = 2; // Second trajectory from Rego's Master thesis
 		routines::generate_Trajectory(count, T, which_trajectory, csiref, csirefdot, csirefddot);

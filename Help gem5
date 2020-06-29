@@ -1,29 +1,17 @@
-export PATH="$(pwd)/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin:${PATH}"
-%%%% N funcionou p mim %%%%%%%%%%
-arm-linux-gnueabihf-g++ -std=c++11 -o control control.cpp -static -fpermissive
 -----------------------------------------------------------------------------------------
 
 2,3 1cpu
 1,4 4cpu
-
-
-
-
-
 
 check 4 - terminal 4 cpu
 check 3 - terminal 1 cpu
 check 2 - hackback 1 cpu
 check 1 - hackback 4 cpu
 
-
-
-
 ----------------------------------------------------------------------------------------
 sudo mount -o loop,offset=32256 linaro-minimal-aarch64.img /mnt/p1
 sudo mount -o loop, workloads.img /mnt/p1
 
-sudo mount -o loop,offset=32256 workloads.img /mnt/p2
 
 
 m5term localhost 3456
@@ -59,6 +47,8 @@ build/ARM/gem5.opt configs/example/fs.py --disk-image=linaro-minimal-aarch64.img
 ------------------------------------- 4CPU -----------------------------------------
 ------------------------------------------------------------------------------------
 build/ARM/gem5.fast configs/example/fs.py --disk-image=linaro-minimal-aarch64.img --disk-image=workloads.img --kernel=vmlinux.vexpress_gem5_v1_64 --machine-type=VExpress_GEM5_V1 --dtb=armv8_gem5_v1_4cpu.dtb --cpu-type=AtomicSimpleCPU --num-cpus=4 --mem-type=LPDDR2_S4_1066_1x32 --mem-size=1GB --caches --l2cache --l2_size=512kB --l1i_size=16kB --l1d_size=16kB --cpu-clock=1.4GHz --sys-clock=1.4GHz --restore-with-cpu=HPI 
+
+build/ARM/gem5.fast configs/example/fs.py --disk-image=linaro-minimal-aarch64.img --disk-image=workloads.img --kernel=vmlinux.vexpress_gem5_v1_64 --machine-type=VExpress_GEM5_V1 --dtb=armv8_gem5_v1_4cpu.dtb --cpu-type=AtomicSimpleCPU --num-cpus=4 --mem-type=LPDDR2_S4_1066_1x32 --mem-size=1GB --caches --l2cache --l2_size=512kB --l1i_size=16kB --l1d_size=16kB --cpu-clock=1.4GHz --sys-clock=1.4GHz --restore-with-cpu=HPI --script=hackback.rcS
 
 build/ARM/gem5.fast configs/example/fs.py --disk-image=linaro-minimal-aarch64.img --disk-image=workloads.img --kernel=vmlinux.vexpress_gem5_v1_64 --machine-type=VExpress_GEM5_V1 --dtb=armv8_gem5_v1_4cpu.dtb --cpu-type=HPI --num-cpus=4 --mem-type=LPDDR2_S4_1066_1x32 --mem-size=1GB --caches --l2cache --l2_size=512kB --l1i_size=16kB --l1d_size=16kB --cpu-clock=1.4GHz --sys-clock=1.4GHz --restore-with-cpu=HPI --script=control.rcS -r 1
 
