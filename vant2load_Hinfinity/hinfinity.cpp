@@ -197,11 +197,11 @@ class hinfinity : public Icontroller
 		Eigen::MatrixXd qrefddot(10,1);
 		qrefddot << xddot,yddot,zddot,0,0,0,0,0,0,0;
 		
-		m5_dump_stats(0,0);
-		m5_reset_stats(0,0);
+		//m5_dump_stats(0,0);
+		//m5_reset_stats(0,0);
 		Eigen::MatrixXd  varfeedforward  = feedforward::compute(qref,qrefdot,qrefddot);
-		m5_dump_stats(0,0);
-		m5_reset_stats(0,0);
+		//m5_dump_stats(0,0);
+		//m5_reset_stats(0,0);
 
 		// Feedforward
                 //Input(0) = Input(0) + 12.6005;

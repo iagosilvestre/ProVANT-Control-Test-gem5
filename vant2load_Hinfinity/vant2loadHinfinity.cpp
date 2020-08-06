@@ -27,9 +27,9 @@ int main()
 
 	while(k<20){
 		
-	m5_reset_stats(0,0);
+	//m5_reset_stats(0,0);
 	out=control->execute(arraymsg);
-	m5_dump_stats(0,0);
+	//m5_dump_stats(0,0);
 		
 	k++;
 	//std::cout << k << " control executed" << std::endl;	
