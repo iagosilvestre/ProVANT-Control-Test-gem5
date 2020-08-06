@@ -9,9 +9,16 @@
 #include <stdio.h>      /* printf, scanf, puts, NULL */
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
+#include <unistd.h>
+#include <ios>
+#include <iostream>
+#include <fstream>
+#include <string>
+
 
 int main()
 	{
+	m5_reset_stats(0,0);
 	simulator_msgs::SensorArray arraymsg;
 	std::vector<double> out;
 	std::vector<double> xref;
@@ -34,14 +41,14 @@ int main()
 //		simulator_msgs::Sensor msgstates;
 //		arraymsg.header;
 //		msgstates = arraymsg.values.at(0);
-
-		while(k<20){
 		
+		while(k<20){
 		//m5_reset_stats(0,0);
 		out=control->execute(arraymsg);
 		//m5_dump_stats(0,0);
 
 		k++;
 		}
+m5_dump_stats(0,0);
 		return 0;
 	}
