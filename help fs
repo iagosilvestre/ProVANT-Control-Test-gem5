@@ -1,6 +1,18 @@
 
 build/ARM/gem5.fast configs/example/fs.py --disk-image=linaro-minimal-aarch64.img --disk-image=workloads.img --kernel=vmlinux.vexpress_gem5_v1_64 --machine-type=VExpress_GEM5_V1 --dtb=armv8_gem5_v1_4cpu.dtb --cpu-type=HPI --num-cpus=4 --mem-type=DDR4_2400_8x8 --mem-size=1GB --caches --l2cache --l2_size=1MB --l1i_size=64kB --l1d_size=32kB --cpu-clock=1.5GHz --sys-clock=1.5GHz --restore-with-cpu=HPI --script=control.rcS -r 2
 
+
+build/ARM/gem5.fast configs/example/fs.py --disk-image=linaro-minimal-aarch64.img --disk-image=workloads.img --kernel=vmlinux.vexpress_gem5_v1_64 --machine-type=VExpress_GEM5_V1 --dtb=armv8_gem5_v1_4cpu.dtb --list-bp-types  
+
+
+build/ARM/gem5.fast configs/example/fs.py --disk-image=linaro-minimal-aarch64.img --disk-image=workloads.img --kernel=vmlinux.vexpress_gem5_v1_64 --machine-type=VExpress_GEM5_V1 --dtb=armv8_gem5_v1_4cpu.dtb --cpu-type=O3_ARM_v7a_3 --num-cpus=4 --mem-type=LPDDR2_S4_1066_1x32 --mem-size=1GB --caches --l2cache --l2_size=512kB --l1i_size=16kB --l1d_size=16kB --cpu-clock=1.4GHz --sys-clock=1.4GHz --restore-with-cpu=O3_ARM_v7a_3 --script=control.rcS -r 2
+
+build/ARM/gem5.fast configs/example/fs.py --disk-image=linaro-minimal-aarch64.img --disk-image=workloads.img --kernel=vmlinux.vexpress_gem5_v1_64 --machine-type=VExpress_GEM5_V1 --dtb=armv8_gem5_v1_4cpu.dtb --cpu-type=O3_ARM_v7a_3 --num-cpus=4 --mem-type=LPDDR2_S4_1066_1x32 --mem-size=1GB --caches --l2cache --l2_size=4MB --l1i_size=32kB --l1d_size=32kB --cpu-clock=1.4GHz --sys-clock=1.4GHz --restore-with-cpu=O3_ARM_v7a_3 --script=control.rcS -r 2
+
+
+--list-cpu-types 
+O3_ARM_v7a_3
+
 ---------------------------------------------------------------------------------------------------------------
 -------------------------------------Raspberry 4 -------------------------------------	
 ---------------------------------------------------------------------------------------------------------------
