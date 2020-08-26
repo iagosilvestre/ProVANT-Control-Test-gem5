@@ -119,6 +119,7 @@ class hinfinity : public Icontroller
 		float trajectoryHeight = 4*trajectoryRadius;
 		float trajTime = 80;
 		float pi = 3.14;
+		float norandom = 1;
 
 		float x = trajectoryRadius*cos((count*T)*2*pi/trajTime);
 		float xdot = -trajectoryRadius*(2*pi/trajTime)*sin((count*T)*2*pi/trajTime);
@@ -137,48 +138,48 @@ class hinfinity : public Icontroller
 		Xref << x,y,z,0,0,0,0.00002965,0.004885,0.004893,0.00484,xdot,ydot,zdot,0,0,0,0,0,0,0,0,0,0,0;
 
 		//Convertendo velocidade angular
-                std::vector<double> etadot = pqr2EtaDot((rand() % 10),
-                		(rand() % 10),
-						(rand() % 10),
-						(rand() % 10),
-						(rand() % 10),
-						(rand() % 10));
+                std::vector<double> etadot = pqr2EtaDot((norandom),
+                		(norandom),
+						(norandom),
+						(norandom),
+						(norandom),
+						(norandom));
 
                 // Integrador Trapezoidal
-		float x_atual = (rand() % 10) - Xref(0);
+		float x_atual = (norandom) - Xref(0);
                 xint = xint + (T/2)*(x_atual + x_ant);
                 x_ant = x_atual;
-                float y_atual = (rand() % 10) - Xref(1);
+                float y_atual = (norandom) - Xref(1);
                 yint = yint + (T/2)*(y_atual + y_ant);
                 y_ant = y_atual;
-                float z_atual = (rand() % 10) - Xref(2);
+                float z_atual = (norandom) - Xref(2);
                 zint = zint + (T/2)*(z_atual + z_ant);
                 z_ant = z_atual;
-                float yaw_atual = (rand() % 10) - Xref(5);
+                float yaw_atual = (norandom) - Xref(5);
                 yawint = yawint + (T/2)*(yaw_atual + yaw_ant);
                 yaw_ant = yaw_atual;
 
 		// vetor de estados aumentado
-                X << (rand() % 10),//x
-        				(rand() % 10),//y
-        				(rand() % 10),//z
-        				(rand() % 10),//roll
-        				(rand() % 10),//pitch
-        				(rand() % 10),//yaw
-        				(rand() % 10),//g1 x
-        				(rand() % 10),//g2 y
-        				(rand() % 10),//aR
-        				(rand() % 10),//aL
-        				(rand() % 10),//vx
-        				(rand() % 10),//vy
-        				(rand() % 10),//vz
+                X << (norandom),//x
+        				(norandom),//y
+        				(norandom),//z
+        				(norandom),//roll
+        				(norandom),//pitch
+        				(norandom),//yaw
+        				(norandom),//g1 x
+        				(norandom),//g2 y
+        				(norandom),//aR
+        				(norandom),//aL
+        				(norandom),//vx
+        				(norandom),//vy
+        				(norandom),//vz
         			 etadot.at(0),//droll
         			 etadot.at(1),//pitch
         			 etadot.at(2),//yaw
-        			 (rand() % 10),//g1dot
-        			 (rand() % 10),//g2dot
-        			 (rand() % 10),//aRdot
-        			 (rand() % 10),//aLdot
+        			 (norandom),//g1dot
+        			 (norandom),//g2dot
+        			 (norandom),//aRdot
+        			 (norandom),//aLdot
         			 xint,
         			 yint,
         			 zint,
