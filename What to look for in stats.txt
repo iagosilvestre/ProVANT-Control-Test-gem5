@@ -1,7 +1,7 @@
 sim_seconds
-system.mem_ctrls.busUtil
+system.mem_ctrls.busUtil 
 system.mem_ctrls.bytesReadDRAM
-system.mem_ctrls.bytesWritten
+system.mem_ctrls.bytesWritten 
 system.cpu1.numCycles 
 system.cpu1.idleCycles 
 system.cpu1.icache.tags.occ_percent::total   
