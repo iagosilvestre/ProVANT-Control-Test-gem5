@@ -26,21 +26,9 @@ int main()
 	std::vector<double> x;
 	int k=0;
 
-//		m5_dump_stats(0,0);
-//		m5_reset_stats(0,0);
-//		Foo* foo1 = new Foo ();
-//		std::cout << "test if main works" << std::endl;;
 		teste* control = new teste();
 	
-//		m5_dump_stats(0,0);
-//		m5_reset_stats(0,0);
-
 		control->config();
-
-//		m5_dump_stats(0,0);
-//		simulator_msgs::Sensor msgstates;
-//		arraymsg.header;
-//		msgstates = arraymsg.values.at(0);
 		
 		while(k<20){
 		m5_reset_stats(0,0);
@@ -49,6 +37,6 @@ int main()
 
 		k++;
 		}
-//m5_dump_stats(0,0);
+
 		return 0;
 	}
