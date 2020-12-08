@@ -15,6 +15,12 @@
 #include <fstream>
 #include <string>
 
+void print(std::vector<auto> const &input)
+{
+	for (int i = 0; i < input.size(); i++) {
+		std::cout << input.at(i) << ' ';
+	}
+}
 
 int main()
 	{
@@ -46,7 +52,8 @@ int main()
 		m5_reset_stats(0,0);
 		out=control->execute(arraymsg);
 		m5_dump_stats(0,0);
-
+//		print(out);
+//		std::cout << "\n";
 		k++;
 		}
 //m5_dump_stats(0,0);
