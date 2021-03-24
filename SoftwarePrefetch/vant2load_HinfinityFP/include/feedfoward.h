@@ -195,7 +195,7 @@ class feedforward
 			   dB2x*caR*cbeta - dB2z*saR - (ktau*lambdaR*caR*sbeta)/b, dB3x*caL*cbeta - dB3z*saL + (ktau*lambdaL*caL*sbeta)/b, 0, 0,
 			   0, 0, 1, 0,
 			   0, 0, 0, 1;
-
+		__builtin_prefetch (&M, 0, 0);
 		Lfr << 0,0,0,0,0,0,0,0,0,0,
 		0,0,0,0,0,0,0,0,0,0,
 		0,0,0,0,0,0,0,0,0,0,
@@ -206,8 +206,8 @@ class feedforward
 		0,0,0,0,0,0,0,mugamma,0,0,
 		0,0,0,0,0,0,0,0,0,0,
 		0,0,0,0,0,0,0,0,0,0;
-		__builtin_prefetch (&M, 0, 1);
-		__builtin_prefetch (&uref, 1, 0);
+		
+		//__builtin_prefetch (&uref, 1, 0);
 		Linplus = (Lin.transpose()*Lin).inverse()*Lin.transpose();
 		//__builtin_prefetch (&qrefddot, 0, 1);
 		//__builtin_prefetch (&C, 0, 1);

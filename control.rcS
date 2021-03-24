@@ -1,0 +1,9 @@
+#!/bin/sh
+# File to run the control benchmark
+
+sudo mount /dev/sdb /mnt
+cd /mnt
+./vant2loadHinfinitySP
+/sbin/m5 exit
+
+
