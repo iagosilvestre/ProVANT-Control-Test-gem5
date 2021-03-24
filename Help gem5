@@ -11,9 +11,8 @@ check 1 - hackback 4 cpu
 sudo mount -o loop,offset=32256 linaro-minimal-aarch64.img /mnt/p1
 sudo mount -o loop, workloads.img /mnt/p1
 
-
-
 m5term localhost 3456
+m5 readfile |sh
 
 aarch64-linux-gnu-g++ -mcpu=cortex-a53 control.cpp -o control -static -fpermissive -lstdc++
 
