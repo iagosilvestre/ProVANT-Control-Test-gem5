@@ -29,15 +29,16 @@ int main()
 	//std::cout << "control initiated" << std::endl;
 	control->config();
 	//std::cout << "control configured" << std::endl;
-
-	while(k<20){
-		
-	m5_reset_stats(0,0);
+	
+	while(k<100){
+	m5_reset_stats(0,0);	
+	//m5_reset_stats(0,0);
 	out=control->execute(arraymsg);
-	m5_dump_stats(0,0);
-		
+	//m5_dump_stats(0,0);
+	m5_dump_stats(0,0);	
 	k++;
 	//std::cout << k << " control executed" << std::endl;	
 	}
+	
 	return 0;
 }
