@@ -6,7 +6,7 @@ CC = arm-linux-gnueabi-g++ -I /usr/include/eigen3/ -I ${GEM5_PATH}/include -I /o
 CFLAGS  = -static ${GEM5_PATH}/util/m5/m5op_arm.S -mcpu=cortex-a53 -mfloat-abi=softfp -mfpu=neon-fp-armv8 -mneon-for-64bits -mtune=cortex-a53 -O2
 
 # the build target executable:
-TARGET = vant2lqr
+TARGET = vant4winf
 
 all: $(TARGET)
 

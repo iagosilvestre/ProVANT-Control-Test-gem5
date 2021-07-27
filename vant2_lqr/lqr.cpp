@@ -11,10 +11,12 @@ class teste : public Icontroller
 	private: Eigen::MatrixXd K;
 	private: Eigen::VectorXd X;
 	private: double T;
+	private: double notrandom;
 
 	public: teste(): Xref(20), K(4,20), X(20), Erro(20), Input(4)
 	{ 
 		T = 0.012;
+		notrandom=1;
 	}
 	public: ~teste()
 	{
@@ -64,24 +66,22 @@ class teste : public Icontroller
 //		}
 	
 		// Integrador Trapezoidal
-		double x_atual = (rand() % 10) - Xref(0);
+		double x_atual = (notrandom) - Xref(0);
 		xint = xint + (T/2)*(x_atual + x_ant);
 		x_ant = x_atual;
-		double y_atual = (rand() % 10) - Xref(1);
+		double y_atual = (notrandom) - Xref(1);
 		yint = yint + (T/2)*(y_atual + y_ant);
 		y_ant = y_atual;
-		double z_atual = (rand() % 10) - Xref(2);
+		double z_atual = (notrandom) - Xref(2);
 		zint = zint + (T/2)*(z_atual + z_ant);
 		z_ant = z_atual;
-		double yaw_atual = (rand() % 10) - Xref(5);
+		double yaw_atual = (notrandom) - Xref(5);
 		yawint = yawint + (T/2)*(yaw_atual + yaw_ant);
 		yaw_ant = yaw_atual;
 		
-		X << (rand() % 10),(rand() % 10), (rand() % 10), (rand() % 10), (rand() % 10), (rand() % 10), (rand() % 10), (rand() % 10), (rand() % 10), (rand() % 10), (rand() % 10), (rand() % 10), (rand() % 10), (rand() % 10), (rand() % 10), (rand() % 10),xint,yint,zint,yawint;
-
+		X << (notrandom),(notrandom), (notrandom), (notrandom), (notrandom), (notrandom), (notrandom), (notrandom), (notrandom), (notrandom), (notrandom), (notrandom), (notrandom), (notrandom), (notrandom), (notrandom),xint,yint,zint,yawint;
 		Erro = X-Xref;
 		Input = -K*Erro;
-
 		// Feedforward
 		Input(0) = Input(0) + 10.2751;
 		Input(1) = Input(1) + 10.2799;

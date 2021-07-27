@@ -17,6 +17,7 @@
 
 int main()
 	{
+	m5_reset_stats(0,0);
 	simulator_msgs::SensorArray arraymsg;
 	std::vector<double> out;
 	std::vector<double> xref;
@@ -30,12 +31,12 @@ int main()
 	//std::cout << "control configured" << std::endl;
 
 	while(k<100){
-	m5_reset_stats(0,0);
+
 	out=control->execute(arraymsg);
-	m5_dump_stats(0,0);
+
 	k++;
 	//std::cout << k << " control executed" << std::endl;
 	}
-
+	m5_dump_stats(0,0);
 	return 0;
 }

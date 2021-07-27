@@ -4,27 +4,25 @@
 #include "include/Sensor.h"
 #include "include/SensorArray.h"
 #include "math.h"
-#include "lqr.cpp"
+#include "adap.cpp"
+#include <algorithm>
+#include <chrono>
+#include <vector>
+#include <memory>
+#include <string>
 #include "m5op.h"
 #include <stdio.h>      /* printf, scanf, puts, NULL */
 #include <stdlib.h>     /* srand, rand */
-#include <time.h>       /* time */
-#include <unistd.h>
-#include <ios>
-#include <iostream>
-#include <fstream>
-#include <string>
-using namespace std;
-void print(std::vector<auto> const &input)
-{
-	for (int i = 0; i < input.size(); i++) {
-		std::cout << input.at(i) << ' ';
-	}
-}
+#include <time.h>
+
+
 
 int main()
 	{
 	m5_reset_stats(0,0);
+	std::vector<int> controlData;
+	unsigned long int auxCount=0;
+
 	simulator_msgs::SensorArray arraymsg;
 	std::vector<double> out;
 	std::vector<double> xref;
@@ -32,26 +30,29 @@ int main()
 	std::vector<double> x;
 	int k=0;
 
-//		m5_dump_stats(0,0);
-//		m5_reset_stats(0,0);
+
 //		Foo* foo1 = new Foo ();
 //		std::cout << "test if main works" << std::endl;;
-		teste* control = new teste();
+		vant3_adaptiveMixCtrl2* control = new vant3_adaptiveMixCtrl2();
 
-//		m5_dump_stats(0,0);
-//		m5_reset_stats(0,0);
+
 
 		control->config();
 
-//		m5_dump_stats(0,0);
+
 //		simulator_msgs::Sensor msgstates;
 //		arraymsg.header;
 //		msgstates = arraymsg.values.at(0);
-
+		//auto all = std::chrono::high_resolution_clock::now();
 		while(k<100){
+
+		//m5_reset_stats(0,0);
 		out=control->execute(arraymsg);
+	  //m5_dump_stats(0,0);
+
 		k++;
 		}
-		m5_dump_stats(0,0);
+
+			m5_dump_stats(0,0);
 		return 0;
 	}
