@@ -1,11 +1,11 @@
 -----------------------------------------------------------------------------------------
+1-4hackback
+2-1hackback
+
+4-4termHack
+5-1termHack
 
 
-
-check 4 - terminal 4 cpu
-check 3 - terminal 1 cpu
-check 2 - hackback 1 cpu
-check 1 - hackback 4 cpu
 
 ----------------------------------------------------------------------------------------
 sudo mount -o loop,offset=32256 linaro-minimal-aarch64.img /mnt/p1
@@ -33,7 +33,7 @@ build/ARM/gem5.opt configs/example/fs.py --script=configs/boot/hack_back_ckpt.rc
 
 build/ARM/gem5.opt configs/example/fs.py --disk-image=linaro-minimal-aarch64.img --kernel=vmlinux.vexpress_gem5_v1_64 --machine-type=VExpress_GEM5_V1 --dtb=armv8_gem5_v1_1cpu.dtb --cpu-type=HPI --num-cpus=1 --mem-type=LPDDR2_S4_1066_1x32 --mem-size=1GB --caches --l2cache --l2_size=512kB --l1i_size=16kB --l1d_size=16kB --cpu-clock=1.4GHz  --restore-with-cpu=HPI --script=hackback.rcS
 
-build/ARM/gem5.opt configs/example/fs.py --disk-image=linaro-minimal-aarch64.img --kernel=vmlinux.vexpress_gem5_v1_64 --machine-type=VExpress_GEM5_V1 --dtb=armv8_gem5_v1_1cpu.dtb --cpu-type=HPI --num-cpus=1 --mem-type=LPDDR2_S4_1066_1x32 --mem-size=1GB --caches --l2cache --l2_size=512kB --l1i_size=16kB --l1d_size=16kB --cpu-clock=1.4GHz  --restore-with-cpu=HPI --script=test.rcS -r 2
+build/ARM/gem5.fast configs/example/fs.py --disk-image=linaro-minimal-aarch64.img --kernel=vmlinux.vexpress_gem5_v1_64 --machine-type=VExpress_GEM5_V1 --dtb=armv8_gem5_v1_1cpu.dtb --cpu-type=HPI --num-cpus=1 --mem-type=LPDDR2_S4_1066_1x32 --mem-size=1GB --caches --l2cache --l2_size=512kB --l1i_size=16kB --l1d_size=16kB --cpu-clock=1.4GHz  --restore-with-cpu=HPI --script=control.rcS -r 2
 
 ------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------
