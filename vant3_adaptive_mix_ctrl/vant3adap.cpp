@@ -19,7 +19,7 @@
 
 int main()
 	{
-	m5_reset_stats(0,0);
+	//m5_reset_stats(0,0);
 	std::vector<int> controlData;
 	unsigned long int auxCount=0;
 
@@ -42,13 +42,13 @@ int main()
 //		msgstates = arraymsg.values.at(0);
 		while(k<100){
 
-		//m5_reset_stats(0,0);
+		m5_reset_stats(0,0);
 		out=control->execute(arraymsg);
-	  //m5_dump_stats(0,0);
+	  	m5_dump_stats(0,0);
 
 		k++;
 		}
 
-			m5_dump_stats(0,0);
+		//m5_dump_stats(0,0);
 		return 0;
 	}

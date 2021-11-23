@@ -1,15 +1,40 @@
 -----------------------------------------------------------------------------------------
-1-4hackback
-2-1hackback
-
-4-4termHack
-5-1termHack
+1-4hackback 
+2-1hackback 
 
 
+
+3-4termHack 
+4-1termHack 
+
+5- cpt.47142911288188422 o3term-4cpu 
+6- cpt.47264572122383422 o3termhack-4cpu 
+
+7- o3term-1cpu
+8- o3termHack-1cpu
+o3 nao funciona hackback aparentemente do jeito que foi feito, talvez do jeito que foi implementado no google colab funcione, criando checkpoint no terminal com ./SUT como arquivo.
+
+9 -cpt o3term4cpu ESTA FUNCIONANDO ESSE DAQUI
+
+47264572122383422 o3 termhack
+
+
+sudo mkdir /mnt/p2;sudo mount /dev/sdb /mnt/p2;cd /mnt/p2;sudo ./vant2lqr100;m5 exit
+
+
+sudo mkdir /mnt/p2;sudo mount /dev/sdb /mnt/p2;cd /mnt/p2
+
+./vant3adap;m5 exit
 
 ----------------------------------------------------------------------------------------
 sudo mount -o loop,offset=32256 linaro-minimal-aarch64.img /mnt/p1
 sudo mount -o loop, workloads.img /mnt/p1
+
+
+grep -f small.txt stats.txt >seconds.txt
+
+
+
 
 m5term localhost 3456
 m5 readfile |sh
